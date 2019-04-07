@@ -7,10 +7,13 @@ import store from './store'
 import fastClick from 'fastclick'
 
 // 多浏览器显示适配，使得效果一致
-import './assets/styles/reset.css'
+import 'styles/reset.css'
 
 // 1像素边框问题 手机多倍屏 css的一个px不对应实际的一个像素
-import './assets/styles/border.css'
+import 'styles/border.css'
+
+// icon引入
+import 'styles/iconfont.css'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
