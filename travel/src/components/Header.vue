@@ -5,11 +5,11 @@
     </div>
     <div class="header-input">
       <span class="iconfont icon-search"></span>
-      City/Tour/Destination
+      城市/景点/行程
     </div>
     <div class="header-right">
       <span class="iconfont icon-arrow-down icon-arrow-down-adjust"></span>
-      City
+      城市
     </div>
   </div>
 </template>
