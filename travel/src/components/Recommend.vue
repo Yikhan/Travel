@@ -17,30 +17,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [
-        {
-          id: '0001',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1604/1e/1e75f8e1af9fe81f90.img.jpg_200x200_0ded2b1b.jpg',
-          title: '世界花卉大观园',
-          desc: '世界花卉大观园一期景观由七大温室和十五个花园广场组成。'
-        },
-        {
-          id: '0002',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1604/1e/1e75f8e1af9fe81f90.img.jpg_200x200_0ded2b1b.jpg',
-          title: '世界花卉大观园',
-          desc: '世界花卉大观园一期景观由七大温室和十五个花园广场组成。'
-        },
-        {
-          id: '0003',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1604/1e/1e75f8e1af9fe81f90.img.jpg_200x200_0ded2b1b.jpg',
-          title: '世界花卉大观园',
-          desc: '世界花卉大观园一期景观由七大温室和十五个花园广场组成。'
-        },
-      ]
-    }
-    
+  props: {
+    recommendList: Array
   }
 }
 </script>

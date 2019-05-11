@@ -2,7 +2,7 @@
   <div>
     <div class="recommend-title">周末去哪儿</div>
     <ul>
-        <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+        <li class="item border-bottom" v-for="item of weekendList" :key="item.id">
           
           <div class="item-img-wrapper">
             <img class="item-img" :src="item.imgUrl"/>
@@ -19,30 +19,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data () {
-    return {
-      recommendList: [
-        {
-          id: '0001',
-          imgUrl: 'http://img1.qunarzz.com/sight/source/1603/6d/2f67ae0659f41f.jpg_r_640x214_bf6cbd0b.jpg',
-          title: '世界花卉大观园',
-          desc: '世界花卉大观园一期景观由七大温室和十五个花园广场组成。'
-        },
-        {
-          id: '0002',
-          imgUrl: 'http://img1.qunarzz.com/sight/source/1811/f3/86173f863bef61.jpg_r_640x214_52b003ac.jpg',
-          title: '世界花卉大观园',
-          desc: '世界花卉大观园一期景观由七大温室和十五个花园广场组成。'
-        },
-        {
-          id: '0003',
-          imgUrl: 'http://img1.qunarzz.com/sight/source/1811/7e/476589267ebb41.jpg_r_640x214_bf599709.jpg',
-          title: '世界花卉大观园',
-          desc: '世界花卉大观园一期景观由七大温室和十五个花园广场组成。'
-        },
-      ]
-    }
-    
+  props: {
+    weekendList: Array
   }
 }
 </script>

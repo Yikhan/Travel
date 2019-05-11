@@ -9,7 +9,7 @@
     </div>
     <div class="header-right">
       <span class="iconfont icon-arrow-down icon-arrow-down-adjust"></span>
-      城市
+      {{city}}
     </div>
   </div>
 </template>
@@ -20,6 +20,9 @@
 
 export default {
   name: 'home',
+  props: {
+    city: String
+  },
   components: {
   
   }
