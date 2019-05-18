@@ -3,65 +3,32 @@
     <div>
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
-          <div class="button-list">
-            <div class="button">北京</div>
+          <div class="current-city-list">
+            <div class="current-city">北京</div>
           </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
-          <div class="button-list">
-            <div class="button">北京</div>
-            <div class="button">北京</div>
-            <div class="button">北京</div>
-            <div class="button">北京</div>
-            <div class="button">北京</div>
-            <div class="button">北京</div>
-            <div class="button">北京</div>
-            <div class="button">北京</div>
+          <div class="popular-city-list">
+            <div 
+              class="popular-city" 
+              v-for="item of popularCities" :key="item.id">
+              {{item.name}}
+            </div>
           </div>
       </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
+      <div class="area" v-for="(item, key) of cities" :key="key">
+        <div class="title border-topbottom">
+          {{key}}
+        </div>
           <div class="city-item-list">
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-          </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-          <div class="city-item-list">
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-          </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-          <div class="city-item-list">
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-          </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-          <div class="city-item-list">
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
-            <div class="city-item border-bottom">阿拉尔</div>
+            <div 
+              class="city-item border-bottom"
+              v-for="innerItem of item"
+              :key="innerItem.id"
+              >
+              {{innerItem.name}}
+            </div>
           </div>
       </div>
     </div>
@@ -72,6 +39,10 @@
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
+  props: {
+    popularCities: Array,
+    cities: Object
+  },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
   }
@@ -101,11 +72,22 @@ export default {
       padding-left .2rem
       color #666
       font-size .26rem
-    .button-list
+    .current-city-list
       padding .1rem .6rem .1rem .1rem
       display flex
       flex-wrap wrap
-      .button
+      .current-city
+        width 30%
+        text-align center
+        margin .1rem
+        padding .1rem 0
+        border .02rem solid #ccc
+        border-radius .06rem
+    .popular-city-list
+      padding .1rem .6rem .1rem .1rem
+      display flex
+      flex-wrap wrap
+      .popular-city
         width 30%
         text-align center
         margin .1rem

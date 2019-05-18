@@ -10,12 +10,13 @@
 
 <script>
 // @ is an alias to /src
+import axios from 'axios'
 import HomeHeader from '@/components/Home/Header'
 import HomeSwiper from '@/components/Home/Swiper'
 import HomeIcons from '@/components/Home/Icons'
 import HomeRecommend from '@/components/Home/Recommend'
 import HomeWeekend from '@/components/Home/Weekend'
-import axios from 'axios'
+
 export default {
   name: 'home',
   components: {
