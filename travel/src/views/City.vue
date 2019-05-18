@@ -2,8 +2,15 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list :cities="cities" :popularCities="popularCities"></city-list>
-    <city-abbr :cities="cities"></city-abbr>
+    <city-list 
+      :cities="cities" 
+      :popularCities="popularCities"
+      :abbr="abbr"
+      ></city-list>
+    <city-abbr 
+      :cities="cities"
+      @abbrChange="handleAbbrChange"
+      ></city-abbr>
   </div>
 </template>
 
@@ -25,7 +32,8 @@ export default {
   data () {
     return {
       cities: {},
-      popularCities: []
+      popularCities: [],
+      abbr: ''
     }
   },
   methods: {
@@ -40,7 +48,9 @@ export default {
         this.cities = data.cities
         this.popularCities = data.hotCities
       }
-      
+    },
+    handleAbbrChange (abbr) {
+      this.abbr = abbr
     }
   },
   mounted () {
