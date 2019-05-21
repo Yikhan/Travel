@@ -23,7 +23,9 @@ export default {
   },
   data () {
     return {
-      touchStatus: false
+      touchStatus: false,
+      startY: 0,
+      timer: null
     }
   },
   computed: {
@@ -35,6 +37,11 @@ export default {
       return abbrs
     }
   },
+  updated () {
+    // 先获得字母A到所在div顶部的距离
+    // 注意props里面的cities一开始为空，必须等待ajax更新才能用下面的方法
+    this.startY = this.$refs['A'][0].offsetTop
+  },
   methods: {
     handleAbbrClick (e) { // 点击首字母后跳转到相应的城市名字区域
       this.$emit('abbrChange', e.target.innerText)
@@ -44,15 +51,19 @@ export default {
     },
     handleTouchMove (e) {
       if (this.touchStatus) {
-        // 先获得字母A到所在div顶部的距离
-        const startY = this.$refs['A'][0].offsetTop
-        // 当前用户触碰位置距离屏幕顶端的距离
-        // 79是上方绿色部分div的高度，需要减掉
-        const touchY = e.touches[0].clientY - 79
-        const index = Math.floor((touchY - startY) / 20)
-        if (index >= 0 && this.abbrs.length) {
-          this.$emit('abbrChange', this.abbrs[index])
+        // 使用timer避免scroll触发频率太高
+        if (this.timer) {
+          clearTimeout(this.timer)
         }
+        this.timer = setTimeout(() => {
+          // 当前用户触碰位置距离屏幕顶端的距离
+          // 79是上方绿色部分div的高度，需要减掉
+          const touchY = e.touches[0].clientY - 79
+          const index = Math.floor((touchY - this.startY) / 20)
+          if (index >= 0 && this.abbrs.length) {
+            this.$emit('abbrChange', this.abbrs[index])
+          }
+        }, 10);
       }
     },
     handleTouchEnd () {
