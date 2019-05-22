@@ -18,6 +18,7 @@
         class="search-item border-bottom" 
         v-for="item of searchResult"
         :key="item.id"
+        @click="handleCityClick(item.name)"
       >
         {{item.name}}
       </li>
@@ -40,6 +41,7 @@ export default {
   props: {
     cities: Object
   },
+
   data () {
     return {
       keyword: '',
@@ -47,11 +49,20 @@ export default {
       timer: null
     }
   },
+
   computed: {
     noSearchResult () {
       return this.searchResult.length === 0
     }
   },
+
+  methods: {
+    handleCityClick (city) {
+      this.$store.commit('changeCurrentCity', city)
+      this.$router.push('/')
+    }
+  },
+
   watch: {
     keyword () {
       if (this.timer) {

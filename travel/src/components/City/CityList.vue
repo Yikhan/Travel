@@ -4,7 +4,9 @@
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
           <div class="current-city-list">
-            <div class="current-city">北京</div>
+            <div class="current-city">
+              {{this.$store.state.city}}
+            </div>
           </div>
       </div>
       <div class="area">
@@ -12,7 +14,10 @@
           <div class="popular-city-list">
             <div 
               class="popular-city" 
-              v-for="item of popularCities" :key="item.id">
+              v-for="item of popularCities" 
+              :key="item.id"
+              @click="handleCityClick(item.name)"
+            >
               {{item.name}}
             </div>
           </div>
@@ -30,7 +35,8 @@
               class="city-item border-bottom"
               v-for="innerItem of item"
               :key="innerItem.id"
-              >
+              @click="handleCityClick(innerItem.name)"
+            >
               {{innerItem.name}}
             </div>
           </div>
@@ -48,8 +54,11 @@ export default {
     cities: Object,
     abbr: String
   },
-  mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+  methods: {
+    handleCityClick (city) {
+      this.$store.commit('changeCurrentCity', city)
+      this.$router.push('/')
+    }
   },
   watch: {
     abbr () {
@@ -58,7 +67,10 @@ export default {
         this.scroll.scrollToElement(element)
       }
     }
-  }
+  },
+  mounted () {
+    this.scroll = new Bscroll(this.$refs.wrapper)
+  },
 }
 </script>
 
