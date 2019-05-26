@@ -10,7 +10,13 @@
     <router-link to="/city">
       <div class="header-right">
         <span class="iconfont icon-arrow-down icon-arrow-down-adjust"></span>
-        {{this.$store.state.city}}
+        {{
+          // 从store里面读取当前city
+          // this.$store.state.city
+          
+          // 使用mapState映射后
+          this.city
+        }}
       </div>
     </router-link>
   </div>
@@ -18,7 +24,7 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'home',
@@ -26,6 +32,9 @@ export default {
   },
   components: {
   
+  },
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>
@@ -45,7 +54,8 @@ export default {
         text-align center
         font-size .4rem
     .header-right
-      width 1.04rem
+      min-width 1.04rem // 根据城市名字长度自动调整宽度
+      padding 0 .1rem
       float right
       text-align center
       color #fff
