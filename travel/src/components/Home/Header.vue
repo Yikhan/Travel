@@ -45,7 +45,7 @@ export default {
         text-align center
         font-size .4rem
     .header-right
-      width 1.8rem
+      width 1.04rem
       float right
       text-align center
       color #fff

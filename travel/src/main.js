@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import store from './store/store'
 
 // 移动端一些机型会有click时间延迟300ms的问题
 import fastClick from 'fastclick'
