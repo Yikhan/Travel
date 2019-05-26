@@ -1,3 +1,4 @@
+
 export default {
   changeCurrentCity (state, city) {
     state.city = city
