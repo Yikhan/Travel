@@ -10,12 +10,13 @@
 
 <script>
 // @ is an alias to /src
-import axios from 'axios'
 import HomeHeader from '@/components/Home/Header'
 import HomeSwiper from '@/components/Home/Swiper'
 import HomeIcons from '@/components/Home/Icons'
 import HomeRecommend from '@/components/Home/Recommend'
 import HomeWeekend from '@/components/Home/Weekend'
+import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   name: 'home',
@@ -28,6 +29,7 @@ export default {
   },
   data () {
     return {
+      lastCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
@@ -37,7 +39,7 @@ export default {
   methods: {
     getHomeInfo () {
       // send ajax request
-      axios.get('/api/data.json')
+      axios.get('/api/data.json?city=' + this.city)
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
@@ -51,9 +53,20 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState(['city'])
+  },
   mounted() {
     this.getHomeInfo()
+    this.lastCity = this.city
   },
+  // 使用了keep-alive标签则会启用activted生命周期函数
+  activated () {
+    if (this.lastCity !== this.city) {
+      this.getHomeInfo()
+      this.lastCity = this.city
+    }
+ }
 }
 </script>
 
