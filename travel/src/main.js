@@ -13,7 +13,7 @@ import 'styles/reset.css'
 import 'styles/border.css'
 
 // icon引入
-import 'styles/iconfont.css'
+import 'styles/iconfont/iconfont.css'
 
 // 轮播插件导入
 import VueAwesomeSwiper from 'vue-awesome-swiper'
