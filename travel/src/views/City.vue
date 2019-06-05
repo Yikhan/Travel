@@ -16,10 +16,10 @@
 
 <script>
 import axios from 'axios'
-import CityHeader from '@/components/City/CityHeader'
-import CitySearch from '@/components/City/CitySearch'
-import CityList from '@/components/City/CityList'
-import CityAbbr from '@/components/City/CityAbbr'
+import CityHeader from '@/components/city/CityHeader'
+import CitySearch from '@/components/city/CitySearch'
+import CityList from '@/components/city/CityList'
+import CityAbbr from '@/components/city/CityAbbr'
 
 export default {
   name: 'City',

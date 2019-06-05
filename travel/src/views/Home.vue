@@ -10,11 +10,11 @@
 
 <script>
 // @ is an alias to /src
-import HomeHeader from '@/components/Home/Header'
-import HomeSwiper from '@/components/Home/Swiper'
-import HomeIcons from '@/components/Home/Icons'
-import HomeRecommend from '@/components/Home/Recommend'
-import HomeWeekend from '@/components/Home/Weekend'
+import HomeHeader from '@/components/home/Header'
+import HomeSwiper from '@/components/home/Swiper'
+import HomeIcons from '@/components/home/Icons'
+import HomeRecommend from '@/components/home/Recommend'
+import HomeWeekend from '@/components/home/Weekend'
 import axios from 'axios'
 import { mapState } from 'vuex'
 
