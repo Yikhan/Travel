@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" @click="handleGalleryClick">
     <div class="wrapper">
       <swiper :options="swiperOptions">
         <!-- slides -->
@@ -35,8 +35,15 @@ export default {
     return {
       swiperOptions: {
         pagination: '.swiper-pagination',
-        paginationType: 'fraction'
+        paginationType: 'fraction',
+        observer: true,
+        observeParents: true
       }
+    }
+  },
+  methods: {
+    handleGalleryClick () {
+      this.$emit('close')
     }
   }
 }

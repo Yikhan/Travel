@@ -10,7 +10,7 @@
     <city-abbr 
       :cities="cities"
       @abbrChange="handleAbbrChange"
-      ></city-abbr>
+    ></city-abbr>
   </div>
 </template>
 
